@@ -1,4 +1,4 @@
-![repo-assets/project-manifesto.jpg]
+![Project Manifesto Image](repo-assets/project-manifesto.jpg)
 
 # Godot Mono FPS Tutorial
 
