@@ -17,6 +17,8 @@ public class CharacterController : KinematicBody
     [Export] public float jumpMaxXDistance = 2.0f;
 
 
+    [Export] public WeaponDefinition weaponDefintion;
+
     // Internal Member
     private Vector3 velocity = Vector3.Zero;
     private float gravity;
@@ -37,6 +39,8 @@ public class CharacterController : KinematicBody
         jumpHeight = jumpHeight / 2.0f;
         gravity = (-2.0f * jumpHeight * Mathf.Pow(sprintSpeed, 2.0f)) / Mathf.Pow(jumpMaxXDistance, 2.0f);
         jumpInitialVelocity = -gravity * (jumpMaxXDistance / sprintSpeed);
+
+        GD.Print(weaponDefintion.nameKey);
     }
 
     public override void _Process(float delta)
