@@ -12,11 +12,21 @@ _global_script_classes=[  ]
 _global_script_class_icons={
 }
 
+[MonoCustomResourceRegistry]
+
+ClassPrefix=""
+SearchType=0
+ResourceScriptDirectories=[ "res://" ]
+
 [application]
 
 config/name="GodotMonoFPSTutorialSeries"
 run/main_scene="res://modules/levels/TestLevel.tscn"
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/MonoCustomResourceRegistry/plugin.cfg" )
 
 [input]
 

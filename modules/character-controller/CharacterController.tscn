@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://modules/character-controller/CharacterController.cs" type="Script" id=1]
+[ext_resource path="res://modules/weapons/Pistol.tres" type="Resource" id=2]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -13,6 +14,7 @@ sprintSpeed = 10.0
 acceleration = 5.0
 jumpHeight = 4.0
 jumpMaxXDistance = 4.0
+weaponDefintion = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
