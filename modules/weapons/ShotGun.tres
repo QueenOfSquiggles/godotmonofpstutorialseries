@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://modules/weapons/WeaponDefinition.cs" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+nameKey = "Shotgun"
+fireRange = 30.0
+rof = 4.0
+damage = 5.0
+equipAnimation = ""
+unequipAnimation = ""
+fireAnimation = ""
+reloadAnimation = ""

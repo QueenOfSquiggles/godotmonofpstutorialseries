@@ -1,6 +1,20 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://modules/character-controller/CharacterController.tscn" type="PackedScene" id=1]
+[ext_resource path="res://modules/weapons/scenes/WeaponPistol.tscn" type="PackedScene" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 51, 1.5, 48 )
+
+[sub_resource type="ProceduralSky" id=2]
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+background_sky = SubResource( 2 )
+tonemap_mode = 4
+ss_reflections_enabled = true
+ssao_enabled = true
+glow_enabled = true
 
 [node name="TestLevel" type="Spatial"]
 
@@ -48,3 +62,29 @@ transform = Transform( 0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.4330
 shadow_enabled = true
 directional_shadow_blend_splits = true
 directional_shadow_normal_bias = 0.0
+
+[node name="WeaponPistol" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3, 6 )
+
+[node name="WeaponPistol2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, 6 )
+
+[node name="WeaponPistol3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3, 6 )
+
+[node name="WeaponPistol4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3, 7 )
+
+[node name="WeaponPistol5" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, 7 )
+
+[node name="WeaponPistol6" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3, 7 )
+
+[node name="Floor" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor"]
+shape = SubResource( 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
