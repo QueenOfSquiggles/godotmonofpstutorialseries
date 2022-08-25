@@ -1,3 +1,4 @@
+using contracts.weapons;
 using Godot;
 using System;
 using transform;
@@ -28,6 +29,8 @@ public class CharacterController : KinematicBody
     // Scene Tree Members
     private Camera camera = null;
     private Spatial cameraY = null;
+    private RayCast camRayCast = null;
+    private Spatial weaponsRoot = null;
 
     public override void _Ready()
         // called when the node is added and after all children node are initialized
@@ -35,6 +38,8 @@ public class CharacterController : KinematicBody
         Input.MouseMode = Input.MouseModeEnum.Captured;
         camera = GetNode<Camera>("CameraRig/YRotation/Camera");
         cameraY = GetNode<Spatial>("CameraRig/YRotation");
+        camRayCast = GetNode<RayCast>("CameraRig/YRotation/Camera/RayCast");
+        weaponsRoot = GetNode<Spatial>("Weapons");
 
         jumpHeight = jumpHeight / 2.0f;
         gravity = (-2.0f * jumpHeight * Mathf.Pow(sprintSpeed, 2.0f)) / Mathf.Pow(jumpMaxXDistance, 2.0f);
@@ -105,6 +110,35 @@ public class CharacterController : KinematicBody
         {
             // uses a ternary operator to assign the MouseMode in the Input singleton which will affect how the mouse is handled
             Input.MouseMode = (Input.MouseMode == Input.MouseModeEnum.Captured? Input.MouseModeEnum.Visible : Input.MouseModeEnum.Captured);
+        }
+        if (e.IsActionPressed("interact"))
+        {
+            camRayCast.ForceRaycastUpdate();
+            if (camRayCast.IsColliding())
+            {
+                if (camRayCast.GetCollider() is IObjectWeapon)
+                {
+                    var node = camRayCast.GetCollider() as Node;
+                    var parent = node.GetParent();
+                    parent.RemoveChild(node);
+
+                    weaponsRoot.AddChild(node);
+                    weaponsRoot.MoveChild(node, 0);
+                    (node as IObjectWeapon).OnEquip();
+
+
+                    while (weaponsRoot.GetChildCount() > 2)
+                    {
+                        var rm = weaponsRoot.GetChild(weaponsRoot.GetChildCount()-1) as Spatial;
+                        weaponsRoot.RemoveChild(rm);
+                        this.GetParent().AddChild(rm);
+                        rm.GlobalTransform = weaponsRoot.GlobalTransform;
+                        (rm as IObjectWeapon).OnDrop();
+                    }
+                }
+            }
+            
+            GD.Print("Weapons Held: " + weaponsRoot.GetChildCount());
         }
     }
 

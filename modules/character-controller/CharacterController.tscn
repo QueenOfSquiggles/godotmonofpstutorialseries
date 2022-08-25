@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://modules/character-controller/CharacterController.cs" type="Script" id=1]
 [ext_resource path="res://modules/weapons/Pistol.tres" type="Resource" id=2]
+[ext_resource path="res://icon.svg" type="Texture" id=3]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -30,3 +31,36 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.926382, 0 )
 [node name="YRotation" type="Spatial" parent="CameraRig"]
 
 [node name="Camera" type="Camera" parent="CameraRig/YRotation"]
+
+[node name="RemoteTransform" type="RemoteTransform" parent="CameraRig/YRotation/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.3, -1.1 )
+remote_path = NodePath("../../../../Weapons")
+update_scale = false
+
+[node name="RayCast" type="RayCast" parent="CameraRig/YRotation/Camera"]
+cast_to = Vector3( 0, 0, -5 )
+debug_shape_custom_color = Color( 1, 0, 0, 1 )
+debug_shape_thickness = 5
+
+[node name="Weapons" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.626382, -1.1 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/CenterContainer"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 506.0
+margin_top = 294.0
+margin_right = 518.0
+margin_bottom = 306.0
+rect_min_size = Vector2( 12, 12 )
+size_flags_horizontal = 5
+size_flags_vertical = 5
+texture = ExtResource( 3 )
+expand = true
