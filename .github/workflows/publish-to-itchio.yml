@@ -19,7 +19,7 @@ jobs:
           CHANNEL: windows
           ITCH_GAME: godot-mono-fps-tutorial-series
           ITCH_USER: queenofsquiggles
-          PACKAGE: godot-mono-fps-windows.zip
+          PACKAGE: godot-mono-fps-tut-windows.zip
           VERSION: ${{ steps.download-windows.outputs.version }}
   release_macos:
     runs-on: ubuntu-latest
@@ -38,7 +38,7 @@ jobs:
           CHANNEL: mac
           ITCH_GAME: godot-mono-fps-tutorial-series
           ITCH_USER: queenofsquiggles
-          PACKAGE: godot-mono-fps-mac.zip
+          PACKAGE: godot-mono-fps-tut-macos.zip
           VERSION: ${{ steps.download-macos.outputs.version }}
   release_linux:
     runs-on: ubuntu-latest
@@ -57,5 +57,5 @@ jobs:
           CHANNEL: linux
           ITCH_GAME: godot-mono-fps-tutorial-series
           ITCH_USER: queenofsquiggles
-          PACKAGE: godot-mono-fps-linux.zip
+          PACKAGE: godot-mono-fps-tut-linux.zip
           VERSION: ${{ steps.download-linux.outputs.version }}
