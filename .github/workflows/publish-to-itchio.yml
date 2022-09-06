@@ -7,13 +7,13 @@ jobs:
     steps:
       - name: download Windows
         id: download-windows
-        uses: dsaltares/fetch-gh-release-asset@master
+        uses: dsaltares/fetch-gh-release-asset@main
         with:
-          file: build/win/windows/godot-mono-fps-tut-windows.exe
+          file: godot-mono-fps-tut-windows.exe
         env:
           GITHUB_TOKEN: "${{ secrets.GH_CREDENTIALS }}"
       - name: deploy to itch.io (Windows)
-        uses: josephbmanley/butler-publish-itchio-action@master
+        uses: josephbmanley/butler-publish-itchio-action@main
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: windows
@@ -26,13 +26,13 @@ jobs:
     steps:
       - name: download MacOS
         id: download-macos
-        uses: dsaltares/fetch-gh-release-asset@master
+        uses: dsaltares/fetch-gh-release-asset@main
         with:
           version: "latest"
-          file: build/win/macos/godot-mono-fps-tut-macos.zip
+          file: godot-mono-fps-tut-macos.zip
           token: "${{ secrets.GH_CREDENTIALS }}"
       - name: deploy to itch.io (MacOS)
-        uses: josephbmanley/butler-publish-itchio-action@master
+        uses: josephbmanley/butler-publish-itchio-action@main
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: mac
@@ -45,13 +45,13 @@ jobs:
     steps:
       - name: download Linux
         id: download-linux
-        uses: dsaltares/fetch-gh-release-asset@master
+        uses: dsaltares/fetch-gh-release-asset@main
         with:
           version: "latest"
-          file: build/win/linux/godot-mono-fps-tut-linux.x86_64
+          file: godot-mono-fps-tut-linux.zip
           token: "${{ secrets.GH_CREDENTIALS }}"
       - name: deploy to itch.io (Linux)
-        uses: josephbmanley/butler-publish-itchio-action@master
+        uses: josephbmanley/butler-publish-itchio-action@main
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: linux
