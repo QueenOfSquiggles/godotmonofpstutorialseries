@@ -9,7 +9,7 @@ jobs:
         id: download-windows
         uses: dsaltares/fetch-gh-release-asset@master
         with:
-          file: godot-mono-fps-tut-windows.zip
+          file: build/win/windows/godot-mono-fps-tut-windows.exe
         env:
           GITHUB_TOKEN: "${{ secrets.GH_CREDENTIALS }}"
       - name: deploy to itch.io (Windows)
@@ -29,7 +29,7 @@ jobs:
         uses: dsaltares/fetch-gh-release-asset@master
         with:
           version: "latest"
-          file: godot-mono-fps-mac.zip
+          file: build/win/macos/godot-mono-fps-tut-macos.zip
           token: "${{ secrets.GH_CREDENTIALS }}"
       - name: deploy to itch.io (MacOS)
         uses: josephbmanley/butler-publish-itchio-action@master
@@ -48,7 +48,7 @@ jobs:
         uses: dsaltares/fetch-gh-release-asset@master
         with:
           version: "latest"
-          file: godot-mono-fps-linux.zip
+          file: build/win/linux/godot-mono-fps-tut-linux.x86_64
           token: "${{ secrets.GH_CREDENTIALS }}"
       - name: deploy to itch.io (Linux)
         uses: josephbmanley/butler-publish-itchio-action@master
