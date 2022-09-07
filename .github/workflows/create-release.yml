@@ -1,5 +1,4 @@
 env:
-    USE_BRANCH: main
     PROJECT_SUBDIR: .
     GODOT_HEADLESS_EXE: https://downloads.tuxfamily.org/godotengine/3.5/mono/Godot_v3.5-stable_mono_linux_headless_64.zip
     GODOT_EXPORT_TEMPLATES: https://downloads.tuxfamily.org/godotengine/3.5/mono/Godot_v3.5-stable_mono_export_templates.tpz
@@ -8,7 +7,7 @@ env:
 on:
   push:
     branches:
-      - ${{ env.USE_BRANCH }}
+      - main
 
 jobs:
   export_game:
