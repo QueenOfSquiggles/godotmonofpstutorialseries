@@ -15,7 +15,7 @@ jobs:
         id: download-windows
         uses: dsaltares/fetch-gh-release-asset@master
         with:
-          file: "$BUILD_WINDOWS"
+          file: ${{ env.BUILD_WINDOWS }}
         env:
           GITHUB_TOKEN: "${{ secrets.GH_CREDENTIALS }}"
       - name: deploy to itch.io (Windows)
@@ -23,9 +23,9 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: windows
-          ITCH_GAME: "$ITCH_GAME_PAGE"
+          ITCH_GAME: ${{ env.ITCH_GAME_PAGE }}
           ITCH_USER: queenofsquiggles
-          PACKAGE: "$BUILD_WINDOWS"
+          PACKAGE: ${{ env.BUILD_WINDOWS }}
           VERSION: ${{ steps.download-windows.outputs.version }}
   release_macos:
     runs-on: ubuntu-latest
@@ -35,16 +35,16 @@ jobs:
         uses: dsaltares/fetch-gh-release-asset@master
         with:
           version: "latest"
-          file: "$BUILD_MACOS"
+          file: ${{ env.BUILD_MACOS }}
           token: "${{ secrets.GH_CREDENTIALS }}"
       - name: deploy to itch.io (MacOS)
         uses: josephbmanley/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: mac
-          ITCH_GAME: "$ITCH_GAME_PAGE"
+          ITCH_GAME: ${{ env.ITCH_GAME_PAGE }}
           ITCH_USER: queenofsquiggles
-          PACKAGE: "$BUILD_MACOS"
+          PACKAGE: ${{ env.BUILD_MACOS }}
           VERSION: ${{ steps.download-macos.outputs.version }}
   release_linux:
     runs-on: ubuntu-latest
@@ -54,14 +54,14 @@ jobs:
         uses: dsaltares/fetch-gh-release-asset@master
         with:
           version: "latest"
-          file: "$BUILD_LINUX"
+          file: ${{ env.BUILD_LINUX }}
           token: "${{ secrets.GH_CREDENTIALS }}"
       - name: deploy to itch.io (Linux)
         uses: josephbmanley/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: linux
-          ITCH_GAME: "$ITCH_GAME_PAGE"
+          ITCH_GAME: ${{ env.ITCH_GAME_PAGE }}
           ITCH_USER: queenofsquiggles
-          PACKAGE: "$BUILD_LINUX"
+          PACKAGE: ${{ env.BUILD_LINUX }}
           VERSION: ${{ steps.download-linux.outputs.version }}
