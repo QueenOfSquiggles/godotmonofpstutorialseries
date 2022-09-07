@@ -21,7 +21,7 @@ jobs:
       - name: create game release
         uses: firebelley/godot-export@v3.0.0
         with:
-          godot_executable_download_url: ${{ env.$GODOT_HEADLESS_EXE }}
+          godot_executable_download_url: ${{ env.GODOT_HEADLESS_EXE }}
           godot_export_templates_download_url: ${{ env.GODOT_EXPORT_TEMPLATES }}
           relative_project_path: ${{ env.PROJECT_SUBDIR }}
           generate_release_notes: 'true'
