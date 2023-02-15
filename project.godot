@@ -66,6 +66,10 @@ interact={
  ]
 }
 
+[mono]
+
+project/assembly_name="GodotMonoFPSTutorialSeries"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
